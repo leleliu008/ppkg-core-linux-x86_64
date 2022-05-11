@@ -20,7 +20,7 @@ do
 
     for item2 in $(basename $item .tar.xz)/bin/*
     do
-        #export PATH="$(dirname $item2):$PATH"
+        export PATH="$(dirname $item2):$PATH"
         run ./$item2 --help
         run ./$item2 --version
     done
