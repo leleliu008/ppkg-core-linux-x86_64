@@ -1,0 +1,25 @@
+name: Rocky Linux
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master, dev ]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ['8', '8.5']
+
+    container: rockylinux:${{ matrix.tag }}
+
+    steps:
+      - run: dnf -y update && dnf -y install git
+
+      - uses: actions/checkout@v3
+
+      - run: test.sh

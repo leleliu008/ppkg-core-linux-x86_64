@@ -1,0 +1,20 @@
+name: VoidLinux-glibc
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master, dev ]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    
+    container: voidlinux/voidlinux
+
+    steps:
+      - run: xbps-install -Syu git
+
+      - uses: actions/checkout@v3
+
+      - run: test.sh
