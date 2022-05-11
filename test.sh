@@ -14,14 +14,23 @@ run() {
     eval "$*"
 }
 
+mkdir bin
+
 for item in linux/x86_64/*.tar.xz
 do
     run tar vxf $item
 
-    for item2 in $(basename $item .tar.xz)/bin/*
-    do
-        export PATH="$(dirname $item2):$PATH"
-        run ./$item2 --help
-        run ./$item2 --version
-    done
+    run cp $(basename $item .tar.xz)/bin/* bin/
+done
+
+run ls bin
+
+export PATH="$PWD/bin:$PATH"
+
+printf '%s\n' "$PATH" | tr ':' '\n'
+
+for item in bin/*
+do
+    run $item --help
+    run $item --version
 done
