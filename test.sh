@@ -4,9 +4,9 @@ set -ex
 
 mkdir bin
 
-for item in *
+for item in linux/x86_64/*.tar.xz
 do
-    tar vxf "linux/x86_64/$item"
+    tar vxf "$item"
     cp -r   "linux/x86_64/$(basename "$item" .tar.xz)/bin" bin
 done
 
