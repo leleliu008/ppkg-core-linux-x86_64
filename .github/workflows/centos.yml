@@ -30,4 +30,4 @@ jobs:
         if:  ${{ matrix.tag == '8.4.2105' }}
 
       - uses: actions/checkout@v3
-      - run:  test.sh
+      - run:  ./test.sh
