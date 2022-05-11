@@ -18,7 +18,7 @@ jobs:
     container: rockylinux:${{ matrix.tag }}
 
     steps:
-      - run: dnf -y update && dnf -y install git
+      - run: dnf -y update && dnf -y install git xz
 
       - uses: actions/checkout@v3
 

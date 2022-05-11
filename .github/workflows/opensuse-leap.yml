@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - run: zypper update  -y
-      - run: zypper install -y git
+      - run: zypper install -y git tar xz
 
       - uses: actions/checkout@v3
 
