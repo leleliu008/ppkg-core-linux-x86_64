@@ -33,7 +33,7 @@ for item in bin/*
 do
     case $item in
         bin/c_rehash)
-            run $item -h
+            # c_rehash is perl script
             ;;
         bin/openssl)
             run $item help
