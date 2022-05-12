@@ -39,6 +39,11 @@ do
             run $item help
             run $item version
             ;;
+        bzdiff|bzgrep|bzip2recover|bzmore)
+            ;;
+        bzip2)
+            run $item --help
+            ;;
         *)
             run $item --help
             run $item --version
