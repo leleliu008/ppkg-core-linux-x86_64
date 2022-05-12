@@ -39,9 +39,9 @@ do
             run $item help
             run $item version
             ;;
-        bzdiff|bzgrep|bzip2recover|bzmore)
+        bin/bzdiff|bin/bzgrep|bin/bzip2recover|bin/bzmore)
             ;;
-        bzip2)
+        bin/bzip2)
             run $item --help
             ;;
         *)
