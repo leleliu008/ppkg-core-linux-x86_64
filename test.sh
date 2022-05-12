@@ -31,6 +31,16 @@ printf '%s\n' "$PATH" | tr ':' '\n'
 
 for item in bin/*
 do
-    run $item --help
-    run $item --version
+    case $item in
+        bin/c_rehash)
+            run $item -h
+            ;;
+        bin/openssl)
+            run $item help
+            run $item version
+            ;;
+        *)
+            run $item --help
+            run $item --version
+    esac
 done
