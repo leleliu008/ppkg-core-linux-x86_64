@@ -20,6 +20,12 @@ for item in linux/x86_64/*.tar.xz
 do
     run tar vxf $item
 
+    case $item in
+        linux/x86_64/git-*)
+            export GIT_EXEC_PATH="$PWD/$item/libexec/git-core"
+            ;;
+    esac
+
     run cp $(basename $item .tar.xz)/bin/* bin/
 done
 
@@ -43,6 +49,12 @@ do
             ;;
         bin/bzip2)
             run $item --help
+            ;;
+        bin/git-*)
+            ;;
+        bin/git)
+            run $item --help
+            run $item --version
             ;;
         *)
             run $item --help
