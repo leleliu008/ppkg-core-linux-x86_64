@@ -14,45 +14,39 @@ run() {
     eval "$*"
 }
 
-mkdir bin
+mkdir core
 
 for item in linux/x86_64/*.tar.xz
 do
-    run tar vxf $item
-
-    case $item in
-        linux/x86_64/git-*)
-            export GIT_EXEC_PATH="$PWD/$item/libexec/git-core"
-            ;;
-    esac
-
-    run cp $(basename $item .tar.xz)/bin/* bin/
+    run tar vxf $item --strip-components=1 -C core
 done
 
-run ls bin
+run core/bin/tree --dirsfirst -L 2
 
-export PATH="$PWD/bin:$PATH"
+export GIT_EXEC_PATH="$PWD/core/libexec/git-core"
+
+export PATH="$PWD/core/bin:$PATH"
 
 printf '%s\n' "$PATH" | tr ':' '\n'
 
-for item in bin/*
+for item in core/bin/*
 do
     case $item in
-        bin/c_rehash)
+        core/bin/c_rehash)
             # c_rehash is perl script
             ;;
-        bin/openssl)
+        core/bin/openssl)
             run $item help
             run $item version
             ;;
-        bin/bzdiff|bin/bzgrep|bin/bzip2recover|bin/bzmore)
+        core/bin/bzdiff|core/bin/bzgrep|core/bin/bzip2recover|core/bin/bzmore)
             ;;
-        bin/bzip2)
+        core/bin/bzip2)
             run $item --help
             ;;
-        bin/git-*)
+        core/bin/git-*)
             ;;
-        bin/git)
+        core/bin/git)
             run $item --help
             run $item --version
             ;;
