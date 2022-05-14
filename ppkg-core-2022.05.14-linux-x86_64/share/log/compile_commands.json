@@ -1,0 +1,82 @@
+[
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/blocksort.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/blocksort.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/blocksort.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/huffman.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/huffman.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/huffman.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/crctable.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/crctable.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/crctable.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/randtable.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/randtable.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/randtable.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/compress.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/compress.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/compress.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/decompress.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/decompress.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/decompress.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bz2_a.dir/bzlib.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/bzlib.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/bzlib.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/blocksort.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/blocksort.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/blocksort.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/huffman.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/huffman.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/huffman.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/crctable.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/crctable.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/crctable.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/randtable.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/randtable.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/randtable.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/compress.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/compress.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/compress.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/decompress.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/decompress.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/decompress.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64 -Dbz2_EXPORTS  -static --static -O3 -DNDEBUG -fPIC -o CMakeFiles/bz2.dir/bzlib.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/bzlib.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/bzlib.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bzip2.dir/bzip2.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/bzip2.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/bzip2.c"
+},
+{
+  "directory": "/home/leleliu008/.ppkg/installing.d/bzip2/src/1652350623",
+  "command": "/home/leleliu008/Downloads/musl-1.2.3/musl-libc/bin/musl-gcc -D_FILE_OFFSET_BITS=64  -static --static -O3 -DNDEBUG -o CMakeFiles/bzip2recover.dir/bzip2recover.c.o -c /home/leleliu008/.ppkg/installing.d/bzip2/src/bzip2recover.c",
+  "file": "/home/leleliu008/.ppkg/installing.d/bzip2/src/bzip2recover.c"
+}
+]
