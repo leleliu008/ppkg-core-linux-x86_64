@@ -111,6 +111,4 @@ run du -sh "$OUTPUT_DIR/$RELEASE_TARFILE"
 
 run ls "$OUTPUT_DIR"
 
-RELEASE_NOTES="$(cat "$OUTPUT_DIR/README")"
-
-run gh release create v"$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" --notes "'$RELEASE_NOTES'"
+run gh release create "$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" --notes-file "$OUTPUT_DIR/README"
