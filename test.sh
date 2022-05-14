@@ -55,6 +55,8 @@ do
             run $item --help
             run $item --version
             ;;
+        core/bin/false)
+            ;;
         *)
             run $item --help
             run $item --version
