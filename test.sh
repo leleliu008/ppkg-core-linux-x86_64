@@ -44,6 +44,11 @@ do
         core/bin/bzip2)
             run $item --help
             ;;
+        core/bin/unzip)
+            run $item --help
+            ;;
+        core/bin/unzipsfx|core/bin/funzip|core/bin/zipinfo|core/bin/zipgrep)
+            ;;
         core/bin/git-*)
             ;;
         core/bin/git)
