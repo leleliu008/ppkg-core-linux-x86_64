@@ -57,6 +57,9 @@ do
             ;;
         core/bin/false)
             ;;
+        core/bin/sqlite3)
+            run $item --version
+            ;;
         *)
             run $item --help
             run $item --version
