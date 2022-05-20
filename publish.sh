@@ -68,7 +68,7 @@ do
     esac
 done
 
-for item in hexdump date base64 realpath md5sum sha256sum
+for item in hexdump date sort realpath base64 md5sum sha256sum
 do
     run cp $TEMP_DIR/bin/$item "$OUTPUT_DIR/bin/"
 done
@@ -85,7 +85,7 @@ essential tools that are used by ppkg shell script.
 
 $CORE_TOOL_BASENAME
 $UTILLINUX_BASENAME/hexdump
-$COREUTILS_BASENAME/date+base64+realpath+md5sum+sha256sum
+$COREUTILS_BASENAME/date+sort+realpath+base64+md5sum+sha256sum
 
 these tools are staticly linked against musl-libc.
 these tools are relocatable which means that you can installed them anywhere.
@@ -107,8 +107,10 @@ run tar vcJf "$RELEASE_TARFILE" "$OUTPUT_DIR"
 
 run mv "$RELEASE_TARFILE" "$OUTPUT_DIR"
 
-run du -sh "$OUTPUT_DIR/$RELEASE_TARFILE"
+run du -sh    "$OUTPUT_DIR/$RELEASE_TARFILE"
+
+run sha256sum "$OUTPUT_DIR/$RELEASE_TARFILE"
 
 run ls "$OUTPUT_DIR"
 
-run gh release create "$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" --notes-file "$OUTPUT_DIR/README"
+run gh release create "$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" linux/x86_64/* --notes-file "$OUTPUT_DIR/README"
