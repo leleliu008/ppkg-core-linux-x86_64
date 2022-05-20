@@ -48,15 +48,15 @@ run install -d "$OUTPUT_DIR"
 
 unset CORE_TOOL_BASENAME
 
-for item in linux/x86_64/*.tar.xz
+for item in *.tar.xz
 do
     case $item in
-        linux/x86_64/openssl-*.tar.xz)
+        openssl-*.tar.xz)
             ;;
-        linux/x86_64/util-linux-*.tar.xz)
+        util-linux-*.tar.xz)
             tar vxf "$item" --strip-components=1 -C "$TEMP_DIR"
             ;;
-        linux/x86_64/gnu-coreutils-*.tar.xz)
+        gnu-coreutils-*.tar.xz)
             tar vxf "$item" --strip-components=1 -C "$TEMP_DIR"
             ;;
         *)  tar vxf "$item" --strip-components=1 -C "$OUTPUT_DIR"
@@ -75,8 +75,8 @@ done
 
 CORE_TOOL_BASENAME=$(printf '%s\n' "$CORE_TOOL_BASENAME" | tr ' ' '\n')
 
-UTILLINUX_BASENAME="$(basename linux/x86_64/util-linux-*.tar.xz    -linux-x86_64.tar.xz)"
-COREUTILS_BASENAME="$(basename linux/x86_64/gnu-coreutils-*.tar.xz -linux-x86_64.tar.xz)"
+UTILLINUX_BASENAME="$(basename util-linux-*.tar.xz    -linux-x86_64.tar.xz)"
+COREUTILS_BASENAME="$(basename gnu-coreutils-*.tar.xz -linux-x86_64.tar.xz)"
 
 cat > "$OUTPUT_DIR/README" <<EOF
 release $OUTPUT_DIR
@@ -113,4 +113,4 @@ run sha256sum "$OUTPUT_DIR/$RELEASE_TARFILE"
 
 run ls "$OUTPUT_DIR"
 
-run gh release create "$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" linux/x86_64/* --notes-file "$OUTPUT_DIR/README"
+run gh release create "$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" *.tar.xz --notes-file "$OUTPUT_DIR/README"
