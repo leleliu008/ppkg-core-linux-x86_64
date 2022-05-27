@@ -59,6 +59,8 @@ do
         gnu-coreutils-*.tar.xz)
             tar vxf "$item" --strip-components=1 -C "$TEMP_DIR"
             ;;
+        gnu-binutils-*.tar.xz)
+            ;;
         *)  tar vxf "$item" --strip-components=1 -C "$OUTPUT_DIR"
             if [ -z "$CORE_TOOL_BASENAME" ] ; then
                 CORE_TOOL_BASENAME="$(basename "$item" -linux-x86_64.tar.xz)"
