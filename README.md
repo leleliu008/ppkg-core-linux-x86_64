@@ -4,7 +4,7 @@ essential tools that are used by [ppkg](https://github.com/leleliu008/ppkg) shel
 
 these tools are statically linked against [musl-libc](https://musl.libc.org/).
 
-these tools are relocatable which means that you can installed them to anywhere.
+these tools are relocatable which means that you can install them to anywhere.
 
 ## Environment Variables
 following environment variables should be set for `git`:
