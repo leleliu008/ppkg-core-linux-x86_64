@@ -2,6 +2,8 @@
 
 set -e
 
+######################################## util #########################################
+
 COLOR_RED='\033[0;31m'          # Red
 COLOR_GREEN='\033[0;32m'        # Green
 COLOR_YELLOW='\033[0;33m'       # Yellow
@@ -26,6 +28,8 @@ die_if_command_not_found() {
     done
 }
 
+######################################## main #########################################
+
 die_if_command_not_found tar gzip git gh tar xz
 
 run cd "$(dirname "$0")"
@@ -33,20 +37,19 @@ run cd "$(dirname "$0")"
 run pwd
 
 unset TEMP_DIR
-unset OUTPUT_DIR
 
 unset RELEASE_VERSION
+unset RELEASE_DIRNAME
 unset RELEASE_TARFILE
 
 RELEASE_VERSION="$(date +%Y.%m.%d)"
+RELEASE_DIRNAME="ppkg-core-$RELEASE_VERSION-linux-x86_64"
+RELEASE_TARFILE="$RELEASE_DIRNAME.tar.xz"
 
-OUTPUT_DIR="ppkg-core-$RELEASE_VERSION-linux-x86_64"
 TEMP_DIR=$(mktemp -d)
 
-run rm -rf     "$OUTPUT_DIR"
-run install -d "$OUTPUT_DIR"
-
-unset CORE_TOOL_BASENAME
+run rm -rf     "$RELEASE_DIRNAME"
+run install -d "$RELEASE_DIRNAME"
 
 for item in *.tar.xz
 do
@@ -61,34 +64,17 @@ do
             ;;
         gnu-binutils-*.tar.xz)
             ;;
-        *)  tar vxf "$item" --strip-components=1 -C "$OUTPUT_DIR"
-            if [ -z "$CORE_TOOL_BASENAME" ] ; then
-                CORE_TOOL_BASENAME="$(basename "$item" -linux-x86_64.tar.xz)"
-            else
-                CORE_TOOL_BASENAME="$CORE_TOOL_BASENAME $(basename "$item" -linux-x86_64.tar.xz)"
-            fi
+        *)  tar vxf "$item" --strip-components=1 -C "$RELEASE_DIRNAME"
     esac
 done
 
 for item in hexdump date sort realpath base64 md5sum sha256sum
 do
-    run cp $TEMP_DIR/bin/$item "$OUTPUT_DIR/bin/"
+    run cp $TEMP_DIR/bin/$item "$RELEASE_DIRNAME/bin/"
 done
 
-CORE_TOOL_BASENAME=$(printf '%s\n' "$CORE_TOOL_BASENAME" | tr ' ' '\n')
-
-UTILLINUX_BASENAME="$(basename util-linux-*.tar.xz    -linux-x86_64.tar.xz)"
-COREUTILS_BASENAME="$(basename gnu-coreutils-*.tar.xz -linux-x86_64.tar.xz)"
-
-cat > "$OUTPUT_DIR/README" <<EOF
-release $OUTPUT_DIR
-
-essential tools that are used by ppkg shell script.
-
-$CORE_TOOL_BASENAME
-$UTILLINUX_BASENAME/hexdump
-$COREUTILS_BASENAME/date+sort+realpath+base64+md5sum+sha256sum
-
+cat >> "$RELEASE_DIRNAME/README" <<EOF
+these tools are used by ppkg shell script.
 these tools are staticly linked against musl-libc.
 these tools are relocatable which means that you can installed them anywhere.
 
@@ -98,21 +84,19 @@ export GIT_TEMPLATE_DIR="\$PPKG_CORE_INSTALL_DIR/share/git-core/templates"
 
 following environment variables should be set for file:
 export MAGIC="\$PPKG_CORE_INSTALL_DIR/share/misc/magic.mgc"
+
 EOF
 
-run rm "$OUTPUT_DIR/installed-metadata"
-run rm "$OUTPUT_DIR/installed-files"
+for item in *.tar.xz
+do
+    sha256sum "$RELEASE_DIRNAME/$RELEASE_TARFILE" >> "$RELEASE_DIRNAME/README"
+done
 
-RELEASE_TARFILE="$OUTPUT_DIR.tar.xz"
+run rm "$RELEASE_DIRNAME/installed-metadata"
+run rm "$RELEASE_DIRNAME/installed-files"
 
-run tar vcJf "$RELEASE_TARFILE" "$OUTPUT_DIR"
+run tar vcJf "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
 
-run mv "$RELEASE_TARFILE" "$OUTPUT_DIR"
+run mv "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
 
-run du -sh    "$OUTPUT_DIR/$RELEASE_TARFILE"
-
-run sha256sum "$OUTPUT_DIR/$RELEASE_TARFILE"
-
-run ls "$OUTPUT_DIR"
-
-run gh release create "$RELEASE_VERSION" "$OUTPUT_DIR/$RELEASE_TARFILE" "$OUTPUT_DIR/bin/curl" "$OUTPUT_DIR/bin/tar" "$OUTPUT_DIR/bin/xz" *.tar.xz --notes-file "$OUTPUT_DIR/README"
+run gh release create "$RELEASE_VERSION" "$RELEASE_DIRNAME/$RELEASE_TARFILE" "$RELEASE_DIRNAME/bin/curl" "$RELEASE_DIRNAME/bin/tar" "$RELEASE_DIRNAME/bin/xz" *.tar.xz --notes-file "$RELEASE_DIRNAME/README"
