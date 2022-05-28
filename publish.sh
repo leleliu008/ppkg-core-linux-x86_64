@@ -95,4 +95,4 @@ done
 
 run mv "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
 
-#run gh release create "$RELEASE_VERSION" "$RELEASE_DIRNAME/$RELEASE_TARFILE" "$RELEASE_DIRNAME/bin/curl" "$RELEASE_DIRNAME/bin/tar" "$RELEASE_DIRNAME/bin/xz" *.tar.xz --notes-file "$RELEASE_NOTES_FILE"
+run gh release create "$RELEASE_VERSION" "$RELEASE_DIRNAME/$RELEASE_TARFILE" "$RELEASE_DIRNAME/bin/curl" "$RELEASE_DIRNAME/bin/tar" "$RELEASE_DIRNAME/bin/xz" *.tar.xz --notes-file "$RELEASE_NOTES_FILE"
