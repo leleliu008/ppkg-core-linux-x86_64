@@ -68,35 +68,31 @@ do
     esac
 done
 
-for item in hexdump date sort realpath base64 md5sum sha256sum
+for item in hexdump date sort ln tr realpath base64 md5sum sha256sum
 do
     run cp $TEMP_DIR/bin/$item "$RELEASE_DIRNAME/bin/"
 done
-
-cat >> "$RELEASE_DIRNAME/README" <<EOF
-these tools are used by ppkg shell script.
-these tools are staticly linked against musl-libc.
-these tools are relocatable which means that you can installed them anywhere.
-
-following environment variables should be set for git:
-export GIT_EXEC_PATH="\$PPKG_CORE_INSTALL_DIR/libexec/git-core"
-export GIT_TEMPLATE_DIR="\$PPKG_CORE_INSTALL_DIR/share/git-core/templates"
-
-following environment variables should be set for file:
-export MAGIC="\$PPKG_CORE_INSTALL_DIR/share/misc/magic.mgc"
-
-EOF
 
 run rm "$RELEASE_DIRNAME/installed-metadata"
 run rm "$RELEASE_DIRNAME/installed-files"
 
 run tar vcJf "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
 
+RELEASE_NOTES_FILE="$RELEASE_DIRNAME/release-notes.md"
+
+run cp README.md "$RELEASE_NOTES_FILE"
+
+cat >> "$RELEASE_NOTES_FILE" <<EOF
+
+|sha256sum|filename|
+|---------|--------|
+EOF
+
 for item in *.tar.xz
 do
-    sha256sum "$item" >> "$RELEASE_DIRNAME/README"
+    sha256sum "$item" | sed -e 's/  /|/' -e 's/^/|/' -e 's/$/|/' >> "$RELEASE_NOTES_FILE"
 done
 
 run mv "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
 
-run gh release create "$RELEASE_VERSION" "$RELEASE_DIRNAME/$RELEASE_TARFILE" "$RELEASE_DIRNAME/bin/curl" "$RELEASE_DIRNAME/bin/tar" "$RELEASE_DIRNAME/bin/xz" *.tar.xz --notes-file "$RELEASE_DIRNAME/README"
+#run gh release create "$RELEASE_VERSION" "$RELEASE_DIRNAME/$RELEASE_TARFILE" "$RELEASE_DIRNAME/bin/curl" "$RELEASE_DIRNAME/bin/tar" "$RELEASE_DIRNAME/bin/xz" *.tar.xz --notes-file "$RELEASE_NOTES_FILE"
