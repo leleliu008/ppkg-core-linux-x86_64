@@ -13,6 +13,7 @@ jobs:
     container: voidlinux/voidlinux
 
     steps:
+      - run: xbps-install -u xbps
       - run: xbps-install -Syu git xz
 
       - uses: actions/checkout@v3
