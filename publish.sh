@@ -87,15 +87,15 @@ export MAGIC="\$PPKG_CORE_INSTALL_DIR/share/misc/magic.mgc"
 
 EOF
 
-for item in *.tar.xz
-do
-    sha256sum "$RELEASE_DIRNAME/$RELEASE_TARFILE" >> "$RELEASE_DIRNAME/README"
-done
-
 run rm "$RELEASE_DIRNAME/installed-metadata"
 run rm "$RELEASE_DIRNAME/installed-files"
 
 run tar vcJf "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
+
+for item in *.tar.xz
+do
+    sha256sum "$item" >> "$RELEASE_DIRNAME/README"
+done
 
 run mv "$RELEASE_TARFILE" "$RELEASE_DIRNAME"
 
