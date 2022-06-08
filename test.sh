@@ -63,6 +63,10 @@ do
         core/bin/ninja)
             run $item --version
             ;;
+        core/bin/ytasm)
+            ;;
+        core/bin/ndisasm)
+            ;;
         *)
             run $item --help
             run $item --version
