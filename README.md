@@ -17,3 +17,8 @@ following environment variables should be set for `file`:
 ```bash
 export MAGIC="$PPKG_CORE_INSTALL_DIR/share/misc/magic.mgc"
 ```
+
+following environment variables should be set for `gnu-binutils`:
+```bash
+export LDFLAGS="$LDFLAGS -fno-use-linker-plugin"
+```
